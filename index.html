@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For Vandoff ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #ff9a9e, #fecfef);
+      overflow: hidden;
+      text-align: center;
+      color: white;
+    }
+
+    h1 {
+      margin-top: 120px;
+      font-size: 45px;
+      transition: opacity 0.5s ease;
+    }
+
+    .btn {
+      padding: 15px 35px;
+      font-size: 22px;
+      margin: 20px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .yes {
+      background: red;
+      color: white;
+    }
+
+    .no {
+      background: gray;
+      color: white;
+      position: absolute;
+    }
+
+    #mainContent {
+      transition: opacity 0.5s ease;
+    }
+
+    #photoSection {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    #photoSection img {
+      width: 350px;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+      animation: zoomIn 1s ease forwards;
+    }
+
+    #loveMessage {
+      margin-top: 30px;
+      font-size: 28px;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .rose {
+      position: absolute;
+      font-size: 26px;
+      animation: fall 5s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% { top: -10%; }
+      100% { top: 110%; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div id="mainContent">
+  <h1>Vandoff 💕<br>Will You Be My Valentine Forever?</h1>
+
+  <button class="btn yes" onclick="sayYes()">Yes ❤️</button>
+  <button class="btn no" onclick="moveNo()" id="noBtn">No 😢</button>
+</div>
+
+<div id="photoSection">
+  <img src="photo.jpeg" alt="Our Photo">
+  <div id="loveMessage">❤️ Our Forever starts now, Vandoff.</div>
+</div>
+
+<script>
+
+let noSize = 22;
+
+function moveNo() {
+  const btn = document.getElementById("noBtn");
+
+  btn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+  btn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+
+  noSize -= 2;
+  if (noSize > 8) {
+    btn.style.fontSize = noSize + "px";
+  }
+}
+
+function sayYes() {
+
+  // Fade out main content
+  const main = document.getElementById("mainContent");
+  main.style.opacity = "0";
+
+  setTimeout(() => {
+    main.style.display = "none";
+
+    // Show photo section
+    const photoSection = document.getElementById("photoSection");
+    photoSection.style.display = "flex";
+
+    startRoses();
+
+  }, 500);
+}
+
+function startRoses() {
+  for (let i = 0; i < 40; i++) {
+    const rose = document.createElement("div");
+    rose.classList.add("rose");
+    rose.innerHTML = "🌹";
+    rose.style.left = Math.random() * 100 + "vw";
+    rose.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(rose);
+  }
+}
+
+</script>
+
+</body>
+</html>
